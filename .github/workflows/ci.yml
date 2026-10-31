@@ -1,0 +1,36 @@
+name: Build and test
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: shapery-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  ios:
+    name: Core tests and iOS Simulator build
+    runs-on: macos-15
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: Toolchain versions
+        run: |
+          xcodebuild -version
+          swift --version
+      - name: Check project is reproducible
+        run: |
+          python3 scripts/generate_project.py
+          git diff --exit-code -- Shapery.xcodeproj
+      - name: Test simulation and build iOS app
+        run: bash scripts/check.sh
+      - name: Validate property lists
+        run: |
+          plutil -lint Apps/iOS/Shapery/Info.plist
+          plutil -lint Apps/iOS/Shapery/PrivacyInfo.xcprivacy
+          plutil -lint Shapery.xcodeproj/project.pbxproj
