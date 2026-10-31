@@ -2,13 +2,20 @@
 
 ## Bootstrap checks
 
-The authoring environment is Linux and has no Swift compiler, Xcode or iOS Simulator. Native compilation and execution cannot be claimed from local checks. GitHub Actions is configured to run core tests and an unsigned iOS Simulator build on macOS; inspect its result for the relevant commit.
+The authoring environment is Linux and has no Swift compiler, Xcode or iOS Simulator. Native validation was therefore performed through GitHub Actions on a macOS runner.
+
+**Verified code commit:** `51ab65a87b879d969bae08dfe89cd38a2a5316fb` on 2026-10-31. [Successful CI run](https://github.com/martnap21/shapery/actions/runs/41228098162), using Xcode 16.4 and Swift 6.1.2 in Swift 5 language mode:
+
+- All eleven core XCTest cases passed with zero failures.
+- Debug iOS Simulator build succeeded for arm64 and x86_64.
+- Checked-in Xcode project regeneration produced no diff.
+- App Info.plist, privacy manifest and project property-list lint passed.
+
+This verifies compilation and core behavior, not app launch, visual layout or device interaction. The manual checks below remain unrun.
 
 Local structural validation covers Python generator syntax/execution and repeatability, XML property lists and scheme parsing, asset JSON, configuration paths, shell syntax, Xcode object references and expected source membership. These checks do not substitute for an Xcode build.
 
 ## Automated coverage
-
-On 2026-10-31, the initial [macOS CI run](https://github.com/martnap21/shapery/actions/runs/41227926414) passed all eleven core tests and project regeneration. Xcode 16.4 found a missing `override` on the SpriteKit scene initializer during the iOS build. That declaration was corrected; subsequent build results should be checked on the follow-up commit.
 
 Eleven XCTest cases in `FactoryTests.swift` cover:
 
