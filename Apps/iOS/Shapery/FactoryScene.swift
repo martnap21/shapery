@@ -9,7 +9,7 @@ final class FactoryScene: SKScene {
     private let cell: CGFloat = 64
     private let mint = SKColor(red: 0.43, green: 0.94, blue: 0.79, alpha: 1)
 
-    init() {
+    override init() {
         super.init(size: CGSize(width: 512, height: 384))
         scaleMode = .aspectFit
         backgroundColor = SKColor(red: 0.055, green: 0.075, blue: 0.10, alpha: 1)

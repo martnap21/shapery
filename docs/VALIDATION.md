@@ -8,6 +8,8 @@ Local structural validation covers Python generator syntax/execution and repeata
 
 ## Automated coverage
 
+On 2026-10-31, the initial [macOS CI run](https://github.com/martnap21/shapery/actions/runs/41227926414) passed all eleven core tests and project regeneration. Xcode 16.4 found a missing `override` on the SpriteKit scene initializer during the iOS build. That declaration was corrected; subsequent build results should be checked on the follow-up commit.
+
 Eleven XCTest cases in `FactoryTests.swift` cover:
 
 - Demo production; occupied/out-of-bounds placement.
