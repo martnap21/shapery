@@ -45,3 +45,18 @@ CI regenerates the project, checks for a diff, runs `swift test`, builds Debug f
 ## Known limitations
 
 The board is tap-only and not individually navigable through VoiceOver; labels on controls do not imply full game accessibility. Cells can be small on compact devices. Items advance discretely, the renderer rebuilds nodes, and there is no camera or interpolation. Wall-clock catch-up, undo, controller input, progression beyond the triangle objective, native Mac/TV apps, cloud sync, app icons and release validation remain unimplemented.
+
+## Release readiness
+
+Status: **development sandbox; not approved as a player release**.
+
+Existing safeguards include validated saves, atomic writes, preservation of unreadable saves, reset confirmation, bounded inventory and deterministic transport. Their presence is not a claim of comprehensive safety coverage.
+
+Before a player-facing milestone, plan and execute additional verification for:
+
+- App launch and primary build/run interactions, including reset cancellation.
+- Save-store integration, lifecycle interruption, failed writes and preservation of unsupported/corrupt saves.
+- Relevant malformed-state boundaries beyond the currently tested save dimensions.
+- Device layout, accessible interaction and performance on the intended supported hardware.
+
+Select concrete acceptance criteria under [engineering practices](ENGINEERING.md) before implementing these tests or changing safety behavior. Existing manual checklist items remain unrun.

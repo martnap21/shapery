@@ -1,5 +1,12 @@
 # Changelog
 
+## Engineering practices — 2026-10-31
+
+- Required plans before implementation and documented rationale, alternatives, tradeoffs and deferrals.
+- Added engineering workflow, release gates, decision summaries and lessons from the bootstrap and instruction acknowledgment.
+- Clarified that successful core tests and builds do not establish UI, device or release readiness.
+- Documentation-only change; no runtime behavior, dependencies, save format or build configuration changed.
+
 ## 0.1.0 — iOS development foundation (2026-10-31)
 
 - Added a ready-to-open iPhone/iPad Xcode project, shared scheme, shared configuration and reproducible project generator.

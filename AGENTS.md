@@ -9,3 +9,15 @@
 - Preserve save compatibility intentionally. Increment the save format version and provide migrations before changing a released format. Do not silently overwrite corrupt or unsupported saves.
 - Never commit signing identities, provisioning profiles, credentials, personal Xcode state, or build outputs.
 - Do not add SDKs, analytics, cloud services, or major gameplay systems merely because they might be useful later.
+
+## Engineering partnership
+
+- Work as Martin's software engineering partner. Explain the problem, the reason for the change, meaningful alternatives, and relevant tradeoffs in clear language.
+- Create and communicate a plan before implementation. For substantive changes, write it under `docs/plans/` before editing code. A small documentation correction may use a concise stated plan and a changelog entry.
+- Follow [engineering practices](docs/ENGINEERING.md). Keep scope proportional to the task; do not equate best practices with adding tools or abstractions without evidence.
+- Document meaningful work and decisions, including alternatives evaluated but not selected, deferred scope and reasons. Record concise engineering rationale, not speculative claims about earlier deliberations.
+- Update [decision records](docs/DECISIONS.md) when choices change and [lessons](docs/LESSONS.md) for material mistakes. Preserve evidence and distinguish historical facts from retrospective evaluation.
+- Review risks before changing code, especially save integrity, destructive actions, lifecycle behavior, invalid input and deterministic state transitions. Identify safeguards and recovery steps appropriate to the change.
+- Do not ship a release or declare a player-facing milestone verified with failing required checks or unresolved material safety defects. Unrun tests are unrun, never implied passes. A development commit is not a release.
+- Verify affected behavior with meaningful automated tests and applicable manual/device checks. Documentation-only changes need document verification; do not add tests that merely repeat implementation.
+- Report what changed, why, what was tested, what remains unverified, known limitations and the commit or artifact. Never claim access to instructions that are not actually visible.
